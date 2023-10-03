@@ -1,3 +1,4 @@
+import { getServerSession } from 'next-auth'
 import { hash } from 'bcrypt'
 import prisma from '@/lib/db'
 
@@ -22,8 +23,11 @@ export default async function Home() {
   // const user = await createUser('test@test.com', 'test')
   // console.log(user)
 
-  const allUsers = await getAllUsers()
-  console.log(allUsers)
+  // const allUsers = await getAllUsers()
+  // console.log(allUsers)
+
+  const session = await getServerSession()
+  console.log({ session })
 
   return <h1>Home</h1>
 }
